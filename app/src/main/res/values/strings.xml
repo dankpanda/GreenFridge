@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">VeganCompanion</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_bookmarks">Bookmarks</string>
+    <string name="remove_bookmark">Remove Bookmark</string>
+    <string name="bookmark_recipe">Bookmark Recipe</string>
+    <string name="greenfridge">GreenFridge</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="register"><u>Register</u></string>
+    <string name="sign_up">Sign up</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="log_out">Log out</string>
+</resources>

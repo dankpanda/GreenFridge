@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "704194323125",
+    "project_id": "greenfridge-a1109",
+    "storage_bucket": "greenfridge-a1109.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704194323125:android:d11e0bfbae982248a494fc",
+        "android_client_info": {
+          "package_name": "com.example.vegancompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "704194323125-08c81dmdo9c1o636qt2os7ve43hqsksj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm9EKnIETmYxy0ELJoEPj83PJObWQk_Kk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "704194323125-08c81dmdo9c1o636qt2os7ve43hqsksj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
