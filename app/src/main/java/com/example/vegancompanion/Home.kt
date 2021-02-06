@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vegancompanion.models.Recipe
@@ -42,8 +43,15 @@ class Home : Fragment() , RecipeAdapter.OnItemClickListener{
     }
 
     override fun onItemClick(item: Recipe) {
-        Toast.makeText(activity, item.toString(), Toast.LENGTH_SHORT).show()
+        val image = item.Image
+        val name = item.Name
+        val instructions = item.Instructions
+        val ingredients = item.Ingredients
+
+        val action = HomeDirections.homeToRecipes(name, ingredients, image, instructions)
+        findNavController().navigate(action)
     }
+
 
     private fun initializeRecyclerView(recyclerView: RecyclerView){
         recyclerView.apply{

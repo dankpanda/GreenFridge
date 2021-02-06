@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(setOf(R.id.fragmentHome, R.id.fragmentBookmarks))
         setupActionBarWithNavController(navController,appBarConfiguration)
 
+
         bottomNavigationView.setupWithNavController(navController)
     }
 }

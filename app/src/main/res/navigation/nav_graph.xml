@@ -26,11 +26,27 @@
     <fragment
         android:id="@+id/fragmentRecipes"
         android:name="com.example.vegancompanion.Recipes"
-        android:label="fragment_recipes"
+        android:label="Recipe"
         tools:layout="@layout/fragment_recipes">
         <action
             android:id="@+id/recipesToHome"
             app:destination="@id/fragmentHome" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="ingredients"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="image"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="instructions"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/fragmentBookmarkedRecipe"
