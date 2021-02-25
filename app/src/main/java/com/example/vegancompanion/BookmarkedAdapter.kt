@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.vegancompanion.models.Recipe
 
-class RecipeAdapter(private val listener: Home) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class BookmarkedAdapter(private val listener: Bookmarks) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var items: List<Recipe> = ArrayList()
 
@@ -32,7 +32,7 @@ class RecipeAdapter(private val listener: Home) : RecyclerView.Adapter<RecyclerV
         return items.size
     }
 
-    fun reloadAdapter(data: List<Recipe>): RecipeAdapter{
+    fun reloadAdapter(data: List<Recipe>): BookmarkedAdapter{
         this.items = data
         return this
     }

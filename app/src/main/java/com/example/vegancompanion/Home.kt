@@ -47,9 +47,26 @@ class Home : Fragment() , RecipeAdapter.OnItemClickListener{
         val name = item.Name
         val instructions = item.Instructions
         val ingredients = item.Ingredients
+        val id = item.Id!!
+        val dbBookmarks = FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().currentUser!!.uid)
+        dbBookmarks.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.hasChild(id)){
+                    val action = HomeDirections.homeToRecipes(name, ingredients, instructions, image,id,true)
+                    findNavController().navigate(action)
+                } else {
+                    val action = HomeDirections.homeToRecipes(name, ingredients, instructions, image,id,false)
+                    findNavController().navigate(action)
+                }
 
-        val action = HomeDirections.homeToRecipes(name, ingredients, image, instructions)
-        findNavController().navigate(action)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(activity,"Failed to retrieve bookmarks",Toast.LENGTH_SHORT).show()
+            }
+        }
+        )
+
     }
 
 

@@ -7,4 +7,10 @@
         android:icon="@drawable/ic_bookmark_add"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/action_remove_bookmark"
+        android:title="@string/remove_bookmark"
+        android:icon="@drawable/ic_bookmark_delete"
+        app:showAsAction="ifRoom"/>
+
 </menu>

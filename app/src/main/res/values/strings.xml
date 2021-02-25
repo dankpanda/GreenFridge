@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VeganCompanion</string>
+    <string name="app_name">GreenFridge</string>
     <string name="menu_home">Home</string>
     <string name="menu_bookmarks">Bookmarks</string>
     <string name="remove_bookmark">Remove Bookmark</string>

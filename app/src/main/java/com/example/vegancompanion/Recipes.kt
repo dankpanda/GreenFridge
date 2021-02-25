@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.vegancompanion.models.Recipe
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -44,6 +47,15 @@ class Recipes : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.recipe_menu, menu)
+        val delButton: MenuItem = menu.findItem(R.id.action_remove_bookmark)
+        val addButton: MenuItem = menu.findItem(R.id.action_add_bookmark)
+        if(args.bookmarked){
+            delButton.isVisible = true
+            addButton.isVisible = false
+        } else {
+            delButton.isVisible = false
+            addButton.isVisible = true
+        }
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -58,7 +70,19 @@ class Recipes : Fragment() {
     }
 
     private fun addBookmark() {
-        TODO("Not yet implemented")
+        val dbBookmarks = FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().currentUser!!.uid)
+        if(args.bookmarked) {
+            Toast.makeText(activity, "Bookmark removed", Toast.LENGTH_SHORT).show()
+            dbBookmarks.child(args.id!!).removeValue()
+            findNavController().navigate(RecipesDirections.recipesToHome())
+        }
+
+        else{
+            Toast.makeText(activity, "Bookmark added", Toast.LENGTH_SHORT).show()
+            val recipe = Recipe(args.name,args.ingredients,args.instructions,args.image,args.id)
+            dbBookmarks.child(args.id!!).setValue(recipe)
+            findNavController().navigate(RecipesDirections.recipesToBookmark())
+        }
     }
 
 
