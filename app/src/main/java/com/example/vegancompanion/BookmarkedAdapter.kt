@@ -43,7 +43,7 @@ class BookmarkedAdapter(private val listener: Bookmarks) : RecyclerView.Adapter<
 
         val recipe_image: ImageView = itemView.findViewById(R.id.recipe_image)
         val recipe_name: TextView = itemView.findViewById(R.id.recipe_name)
-
+        val recipe_rating: TextView = itemView.findViewById(R.id.rating)
         init{
             itemView.setOnClickListener(this)
         }
@@ -55,6 +55,12 @@ class BookmarkedAdapter(private val listener: Bookmarks) : RecyclerView.Adapter<
         }
 
         fun bind(recipes: Recipe){
+            recipe_name.text=recipes.Name
+            if(recipes.Rating.toString().toFloatOrNull() == null) {
+                recipe_rating.text = "N/A"
+            }else{
+                recipe_rating.text = recipes.Rating?.toFloat().toString()
+            }
             recipe_name.text=recipes.Name
 
             val requestOptions = RequestOptions().placeholder(R.drawable.ic_launcher_background).error(R.drawable.ic_launcher_background)

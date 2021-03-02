@@ -22,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = Firebase.auth
@@ -66,6 +67,7 @@ class LoginActivity : AppCompatActivity() {
         )
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    Toast.makeText(this, "Logged in as ${FirebaseAuth.getInstance().currentUser!!.email}", Toast.LENGTH_SHORT).show()
                     val user = auth.currentUser
                     updateUI(user)
                 } else {

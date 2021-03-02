@@ -5,7 +5,8 @@ data class Recipe (
     var Ingredients: String? = null,
     var Instructions: String? = null,
     var Image: String? = null,
-    var Id: String? = null
+    var Id: String? = null,
+    var Rating: String? = null
 ){
 
 }

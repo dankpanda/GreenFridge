@@ -27,8 +27,8 @@ class Home : Fragment() , RecipeAdapter.OnItemClickListener{
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
@@ -103,13 +103,6 @@ class Home : Fragment() , RecipeAdapter.OnItemClickListener{
 
     }
 
-    private fun initRecyclerView(recyclerView: RecyclerView){
-        recyclerView.apply{
-        val gridLayoutManager = GridLayoutManager(activity,2,GridLayoutManager.VERTICAL,false)
-        layoutManager = gridLayoutManager
-        adapter = recipeAdapter}
-    }
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.home_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -125,8 +118,8 @@ class Home : Fragment() , RecipeAdapter.OnItemClickListener{
         Toast.makeText(activity,"Logged out from ${FirebaseAuth.getInstance().currentUser?.email}",Toast.LENGTH_SHORT).show()
         Firebase.auth.signOut()
         val intent = Intent(
-            activity,
-            LoginActivity::class.java
+                activity,
+                LoginActivity::class.java
         )
         activity?.startActivity(intent)
 

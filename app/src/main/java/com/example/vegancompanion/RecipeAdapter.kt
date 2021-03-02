@@ -43,6 +43,7 @@ class RecipeAdapter(private val listener: Home) : RecyclerView.Adapter<RecyclerV
 
         val recipe_image: ImageView = itemView.findViewById(R.id.recipe_image)
         val recipe_name: TextView = itemView.findViewById(R.id.recipe_name)
+        val recipe_rating: TextView = itemView.findViewById(R.id.rating)
 
         init{
             itemView.setOnClickListener(this)
@@ -56,7 +57,11 @@ class RecipeAdapter(private val listener: Home) : RecyclerView.Adapter<RecyclerV
 
         fun bind(recipes: Recipe){
             recipe_name.text=recipes.Name
-
+            if(recipes.Rating.toString().toFloatOrNull() == null) {
+                recipe_rating.text = "N/A"
+            }else{
+                recipe_rating.text = recipes.Rating?.toFloat().toString()
+            }
             val requestOptions = RequestOptions().placeholder(R.drawable.ic_launcher_background).error(R.drawable.ic_launcher_background)
 
             Glide.with(itemView.context).applyDefaultRequestOptions(requestOptions).load(recipes.Image).into(recipe_image)
