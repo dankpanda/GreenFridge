@@ -14,4 +14,10 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="log_out">Log out</string>
     <string name="rate">Rate this recipe</string>
+    <string name="load_comments">Load comments</string>
+    <string name="load_more_comments">Load more comments</string>
+    <string name="comments">Comments:</string>
+    <string name="rate_this_recipe">Rate this recipe</string>
+    <string name="enter_your_comment_here">Enter your comment here</string>
+    <string name="submit_comment">Submit comment</string>
 </resources>

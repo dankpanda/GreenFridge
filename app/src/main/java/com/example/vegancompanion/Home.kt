@@ -24,6 +24,7 @@ class Home : Fragment() , RecipeAdapter.OnItemClickListener{
     private var recipeAdapter: RecipeAdapter = RecipeAdapter(this)
     private var database = Firebase.database
     private lateinit var recyclerView: RecyclerView
+    private var valid = true
 
 
     override fun onCreateView(
@@ -39,6 +40,7 @@ class Home : Fragment() , RecipeAdapter.OnItemClickListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.home_recycler_view)
+        valid = true
         fetchRecipes()
     }
 
@@ -51,12 +53,16 @@ class Home : Fragment() , RecipeAdapter.OnItemClickListener{
         val dbBookmarks = FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().currentUser!!.uid)
         dbBookmarks.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.hasChild(id)){
+                if(snapshot.hasChild(id) && valid){
                     val action = HomeDirections.homeToRecipes(name, ingredients, instructions, image,id,true)
                     findNavController().navigate(action)
-                } else {
+                    valid = false
+
+                } else if (valid){
                     val action = HomeDirections.homeToRecipes(name, ingredients, instructions, image,id,false)
                     findNavController().navigate(action)
+                    valid = false
+
                 }
 
             }

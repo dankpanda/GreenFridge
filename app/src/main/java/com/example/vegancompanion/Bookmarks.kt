@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -26,6 +24,7 @@ class Bookmarks : Fragment(), BookmarkedAdapter.OnItemClickListener {
     private var recipeAdapter: BookmarkedAdapter = BookmarkedAdapter(this)
     private var database = Firebase.database
     private lateinit var recyclerView: RecyclerView
+    private var valid = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,18 +32,6 @@ class Bookmarks : Fragment(), BookmarkedAdapter.OnItemClickListener {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_bookmarks, container, false)
-        val emptyTextView: TextView = view.findViewById(R.id.emptyTextView)
-        val dbBookmarks = FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().currentUser!!.uid)
-        dbBookmarks.addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                emptyTextView.isVisible = !snapshot.hasChildren()
-                }
-
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(activity, "Failed to retrieve bookmarks",Toast.LENGTH_SHORT).show()
-            }
-
-        })
         return view
     }
 
@@ -52,6 +39,7 @@ class Bookmarks : Fragment(), BookmarkedAdapter.OnItemClickListener {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.bookmarks_recycler_view)
         fetchRecipes()
+        valid = true
     }
 
     override fun onItemClick(item: Recipe) {
@@ -62,6 +50,7 @@ class Bookmarks : Fragment(), BookmarkedAdapter.OnItemClickListener {
         val id = item.Id!!
         val action = BookmarksDirections.bookmarksToRecipes(name, ingredients, instructions, image,id,true)
         findNavController().navigate(action)
+        valid = false
     }
 
     private fun initializeRecyclerView(recyclerView: RecyclerView){

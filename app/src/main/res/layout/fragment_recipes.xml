@@ -82,34 +82,73 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/frg_recipe_instructions_title" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/rate"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/rate"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/frg_recipe_instructions">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/rate_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_edit_text"
-                    android:inputType="numberDecimal" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:id="@+id/rate_button"
+            <TextView
+                android:id = "@+id/rate_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Submit rating"
+                android:text = "@string/rate_this_recipe"
+                app:layout_constraintTop_toBottomOf="@id/frg_recipe_instructions"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rate"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="16dp"
+                android:textSize="20sp"/>
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stepSize="1"
+                android:numStars="5"
+                app:layout_constraintTop_toBottomOf="@id/rate_text_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id = "@+id/recipe_comments_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "@string/comments"
+                android:layout_marginTop = "20dp"
+                app:layout_constraintTop_toBottomOf="@id/ratingBar"
+                app:layout_constraintStart_toStartOf="@id/frg_recipe_name_title"
+                android:textSize="25sp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/submit_comment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/enter_your_comment_here"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recipe_comments_title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/submit_comment_text_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@drawable/ic_edit_text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/submit_comment_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/submit_comment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/submit_comment"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id = "@+id/comments_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/submit_comment_button"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="25dp"
+                 />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
