@@ -55,7 +55,7 @@
                 android:id="@+id/rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/textboxcolor"
                 android:drawableStart="@drawable/ic_star"
                 android:elevation="5dp"
                 android:text="0.0"
