@@ -20,4 +20,6 @@
     <string name="rate_this_recipe">Rate this recipe</string>
     <string name="enter_your_comment_here">Enter your comment here</string>
     <string name="submit_comment">Submit comment</string>
+    <string name="forgot_password"><u>Forgot password</u></string>
+    <string name="send_email">Send email</string>
 </resources>

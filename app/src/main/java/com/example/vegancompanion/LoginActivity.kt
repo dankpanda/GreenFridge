@@ -32,6 +32,12 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
+        // On click listener for forget password button
+        binding.forgotPassword.setOnClickListener{
+            startActivity(Intent(this,ForgetActivity::class.java))
+            finish()
+        }
+
         // On click listener for sign in button
         binding.signInButton.setOnClickListener {
             doLogin()
