@@ -14,6 +14,15 @@
             android:id="@+id/homeToRecipes"
             app:destination="@id/fragmentRecipes" />
     </fragment>
+
+    <fragment
+        android:id="@+id/fragmentFeedback"
+        android:name="com.example.vegancompanion.Feedback"
+        android:label="Feedback"
+        tools:layout="@layout/fragment_feedback">
+
+    </fragment>
+
     <fragment
         android:id="@+id/fragmentBookmarks"
         android:name="com.example.vegancompanion.Bookmarks"
